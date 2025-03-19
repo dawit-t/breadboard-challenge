@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Client - Aggregated Electronic Parts</title>
+</head>
+<body>
+<pre id="response-msg"></pre>
+</body>
+<script>
+  const responseMsg = document.getElementById('response-msg');fetch("http://localhost:3000/suppliers/aggregated")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('API endpoint not responding!');
+      }
+      return response.json();
+    })
+    .then(data => {
+      responseMsg.textContent = JSON.stringify(data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+</script>
+</html>
